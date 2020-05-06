@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p><a href="/register">Регистрация</a></p>
+   {% if current_user.is_authenticated %}
+    <p> <a href="{{ url_for('tasks_list') }}">Задачи пользователей</a></p>
+    <p> <a href="/add-tasks">Добавить задачи</a></p>
+   {% endif %}
+   {% if not current_user.is_authenticated %}
+   <p>Выполните вход или зарегистрируйтесь</p>
+   {% endif %}
+
+{% endblock content %}

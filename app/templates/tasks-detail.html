@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="tasks">
+    <h1>{{ tasks.author }}</h1>
+    <h5> {{ tasks.title }}</h5>
+    <p>{{ tasks.desc }}</p>
+    <p>{{ tasks.time_start }}</p>
+    <p>{{ tasks.time_end }}</p>
+</div>
+{% if message %}
+    <h3> {{ message }}</h3>
+{% endif %}
+{% if current_user.email == tasks.author %}
+<form method="POST" action="{{ url_for('tasks_detail', tasks_id=tasks.id) }}">
+        {{ form.csrf_token }}
+        <br>
+        Тема {{ form.title }}
+        <br>
+        Описание {{ form.description }}
+        <br>
+        Начато {{ form.time_start }}
+        <br>
+        Оконченно {{ form.time_end }}<br>
+    <input type="submit" value="Измениеть">
+</form>
+{% endif %}
+
+{% endblock content %}

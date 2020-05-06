@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" action="/register">
+        {{ form.csrf_token }}
+        Введите имя {{ form.name }}
+        Введите почту{{ form.email(size=20) }}
+        Введите пароль{{ form.password(size=20) }}
+    <input type="submit" value="register">
+</form>
+<p> Вы регистрировались ранее? <a href="/login">Вход</a></p>
+{% endblock content %}

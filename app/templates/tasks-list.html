@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for task in tasks %}
+<a style="text-decoration: none" href="{{ url_for('tasks_detail', tasks_id=task.id) }}">
+    <div class="tasks">
+        <h3>{{ task.title }}</h3>
+        <h5> {{ task.author }}</h5>
+        <p>{{ task.desc }}</p>
+        <p>{{ task.time_start }}</p>
+        <p>{{ task.time_end }}</p>
+    </div>
+</a>
+
+    {% endfor %}
+{% endblock content %}
